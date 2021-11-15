@@ -1,0 +1,30 @@
+
+Create a Service - PaymentService 
+  with details of payment and it also has reference of customer
+  
+  Payment{
+  
+   txnId
+   txnDate
+   Amount
+   description
+   
+   customerId;
+  }
+  
+  
+ From reactive client  make a request /client/customers/{id}
+ 
+ it should return an Object Payment with the details of customer 
+ 
+ 	int customerId;
+	String customerName;
+	String email;
+	long mobileNumber;
+    
+    txnId
+   txnDate
+   Amount
+   description
+   
+   }

@@ -12,7 +12,7 @@ import java.util.*;
 
 import javax.transaction.Transactional;
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, String> {
+public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
 
 	

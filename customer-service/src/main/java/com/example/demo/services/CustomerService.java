@@ -8,14 +8,17 @@ import com.example.demo.ifaces.CustomerRepository;
 import com.example.demo.model.*;
 import java.util.*;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Data
+@AllArgsConstructor
 @Slf4j
 public class CustomerService {
 
+	
 	
 	private  CustomerRepository repo;
 
@@ -35,7 +38,7 @@ public class CustomerService {
 		return this.repo.save(entity);
 	}
 	
-	public Customer findById(String id) {
+	public Customer findById(int id) {
 	
 		   log.debug("Find By Id in Service  Called");
 		    
@@ -45,10 +48,10 @@ public class CustomerService {
 		   
 	}
 	
-	public Optional<String> remove(String id) {
+	public Optional<Integer> remove(int id) {
 		
 		
-		   Optional<String> optional = Optional.empty();
+		   Optional<Integer> optional = Optional.empty();
 
 		   if(this.repo.existsById(id)) {
 

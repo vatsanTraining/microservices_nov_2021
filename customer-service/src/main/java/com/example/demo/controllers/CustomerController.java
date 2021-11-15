@@ -8,34 +8,34 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
 import com.example.demo.model.*;
+import com.example.demo.services.CustomerService;
 @RestController
 public class CustomerController {
 
 	
-	@Autowired
-	private List<Customer> custList;
-	
-	
-	@Autowired
-	private Customer customer;
 	
 	
 	@Value("${server.port}")
 	private String portNumber;
 	
+	
+	@Autowired
+	private CustomerService service;
+	
 	@GetMapping(path = "/api/v1/customers")
 	public List<Customer> getCustomerList(){
 		
-		return this.custList;
+		return this.service.findAll();
 	}
 	
 	
 	@GetMapping(path = "/api/v1/customers/{id}")
-	public String getCustomerById(@PathVariable("id") int id){
+	public Customer getCustomerById(@PathVariable("id") int id){
 		
 		
 		
-		return this.customer.toString()+this.portNumber;
+		return this.service.findById(id);
+		
 	}
 
 	
