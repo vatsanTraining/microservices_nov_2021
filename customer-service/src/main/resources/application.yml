@@ -3,6 +3,21 @@ server:
   
       
 spring:  application:    name: customer-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: srivatsan
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update  
+      
+logging:
+  level:
+    org.hibernate.sql:  debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace 
                 
                 
 eureka:
