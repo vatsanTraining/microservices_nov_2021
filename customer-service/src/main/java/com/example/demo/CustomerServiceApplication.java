@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 
 import com.example.demo.model.Customer;
 
@@ -17,6 +18,7 @@ public class CustomerServiceApplication {
 
 	
 	@Bean
+	@Primary
 	public Customer ramesh() {
 		
 		return new Customer(101,"Ramesh", "ram@abc.com", 848482);
