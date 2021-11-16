@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -15,11 +16,6 @@ public class ReactiveClientApplication {
 	}
 
 	@Bean
-	RestTemplate template()
-	{
-		return new RestTemplate();
-	}
-	@Bean
 	@LoadBalanced
 	public WebClient.Builder builder(){
 		
@@ -27,7 +23,7 @@ public class ReactiveClientApplication {
 	}
 	
 	@Bean
-	public WebClient client(WebClient.Builder builderRef) {
+	public WebClient client(@Qualifier("builder") WebClient.Builder builderRef) {
 		
 		return builderRef.build();
 	}
@@ -39,7 +35,7 @@ public class ReactiveClientApplication {
 	}
 	
 	@Bean(name="client2")
-	public WebClient client2(WebClient.Builder bldr) {
+	public WebClient client2(@Qualifier("bldr") WebClient.Builder bldr) {
 		
 		return bldr.build();
 	}

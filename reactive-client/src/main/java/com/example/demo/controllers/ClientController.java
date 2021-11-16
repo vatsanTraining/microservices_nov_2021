@@ -15,9 +15,6 @@ import reactor.core.publisher.Mono;
 public class ClientController {
 
 	
-	@Autowired
-	RestTemplate template;
-	
 	
 	@Autowired
 	private WebClient client;
