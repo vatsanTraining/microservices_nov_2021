@@ -17,7 +17,7 @@ public class CustomInfoEndPoint implements InfoContributor {
 
 		   Map<String, Object> details = new HashMap<>();
 
-		    details.put("application-name", ctx.getApplicationName());
+		    details.put("application-name", ctx.getEnvironment().getProperty("spring.application.name"));
 	        details.put("bean-definition-count", ctx.getBeanDefinitionCount());
 	        details.put("startup-date", ctx.getStartupDate());
 
