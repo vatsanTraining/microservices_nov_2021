@@ -2,6 +2,7 @@ server:
   port: 6060
 
 spring:  application:    name: menu-service  
+    
 info:
   build: 
     artifactId: '@project.artifact@'
@@ -13,3 +14,7 @@ info:
     
     
 management:  endpoints:    web:      exposure:        include:        - "*"  
+  endpoint:    health:      show-details: always    
+    shutdown:      enabled: true  
+      
+      
