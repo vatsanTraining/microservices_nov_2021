@@ -31,4 +31,16 @@ public class ReactiveClientApplication {
 		
 		return builderRef.build();
 	}
+	
+	@Bean
+	public WebClient.Builder bldr(){
+		
+		return WebClient.builder();
+	}
+	
+	@Bean(name="client2")
+	public WebClient client2(WebClient.Builder bldr) {
+		
+		return bldr.build();
+	}
 }
