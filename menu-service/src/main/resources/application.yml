@@ -1,0 +1,15 @@
+server:
+  port: 6060
+
+spring:  application:    name: menu-service  
+info:
+  build: 
+    artifactId: '@project.artifact@'
+    groupId: '@project.groupId@'
+  java:
+    version: '@java.version@'
+  author:
+    name: srivatsan      
+    
+    
+management:  endpoints:    web:      exposure:        include:        - "*"  

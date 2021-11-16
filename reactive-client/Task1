@@ -9,7 +9,7 @@ Create a Service - PaymentService
    Amount
    description
    
-   customerId;
+   int customerId;
   }
   
   
