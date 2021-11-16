@@ -1,0 +1,15 @@
+
+spring:  config:    activate:      on-profile:      - dev
+      
+server:  port: 6060
+  
+logging:  level:    org.springframework.boot: debug
+    
+---
+
+spring:  config:    activate:      on-profile:      - prod
+      
+server:  port: 6065
+  
+logging:  level:    org.springframework.boot: info        
+           

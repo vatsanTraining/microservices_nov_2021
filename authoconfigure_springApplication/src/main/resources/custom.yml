@@ -1,0 +1,8 @@
+logging:
+  level:
+    org:
+      springframework:
+        boot: debug
+spring:
+  application:
+    name: autoconfig
