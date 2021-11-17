@@ -12,4 +12,5 @@ logging:
   level:
     org.hibernate.sql:  debug
     org.hibernate.type.descriptor.sql.BasicBinder: trace 
-      
+
+server:  port: 5055      
