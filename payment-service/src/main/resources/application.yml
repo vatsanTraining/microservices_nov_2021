@@ -1,6 +1,13 @@
 server:
   port: 4080
 
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://localhost:4040/oauth/check_token
+    client:
+      client-id: myclient
+      client-secret: pass123
 spring:
   application:
     name: payment-service
