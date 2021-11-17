@@ -7,9 +7,14 @@ spring:
     
   jpa:    show-sql: true
     hibernate:      ddl-auto: update  
-      
-logging:
-  level:
-    org.hibernate.sql:  debug
-    org.hibernate.type.descriptor.sql.BasicBinder: trace 
-      
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: 
+            client-secret: 
+            scope:
+            - "['read','write']"
+            
+            
