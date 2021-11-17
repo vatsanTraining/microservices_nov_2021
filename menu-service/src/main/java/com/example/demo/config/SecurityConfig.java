@@ -1,5 +1,7 @@
 package com.example.demo.config;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,15 +24,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	@Autowired
+	private DataSource dataSource;
+	
+	@Autowired
 	private BCryptPasswordEncoder encoder;
 	
+//	@Override
+//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//
+//		  auth.inMemoryAuthentication().withUser("india").password(encoder.encode("india")).roles("ADMIN")
+//		  .and()
+//		   .withUser("nepal").password(encoder.encode("nepal")).roles("USER");
+//	
+//	}
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		  auth.inMemoryAuthentication().withUser("india").password(encoder.encode("india")).roles("ADMIN")
-		  .and()
-		   .withUser("nepal").password(encoder.encode("nepal")).roles("USER");
-	
+		  auth.jdbcAuthentication()
+		        .dataSource(dataSource)
+		          .usersByUsernameQuery("SELECT username, password, enabled from users2 where username = ?")
+		            .authoritiesByUsernameQuery("SELECT u.username, a.authority " +
+		                    "FROM authorities a, users2 u " +
+		                    "WHERE u.username = ? " +
+		                    "AND u.username = a.username").passwordEncoder(encoder);	
 	}
 
 	@Override

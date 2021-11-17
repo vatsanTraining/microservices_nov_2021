@@ -3,6 +3,10 @@ server:
 
 spring:  application:    name: menu-service  
   config:    import: configserver:http://localhost:8888        
-    
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: srivatsan
+    driver-class-name: com.mysql.cj.jdbc.Driver    
       boot:    admin:      client:        url:        - http://localhost:9494
         
