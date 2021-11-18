@@ -4,6 +4,7 @@ import java.security.Principal;
 
 import javax.annotation.security.RolesAllowed;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,19 +20,17 @@ public class MenuController {
 
 	private String message=".";
 	
+	
+	@Autowired
+	private Utils util;
 	@GetMapping(path = "/menu/{type}")
 	@RolesAllowed(value = {"ROLE_ADMIN","ROLE_USER"})
 	public String getMenu(@PathVariable("type") String type,Principal principal) {
 		
 		System.out.println("user In role :="+principal.getName());
 		
-		if(type.equalsIgnoreCase("south")) {
-		return "Idly,Pongal,Vadai,Othappam" +","+message;
-		} else {
-			return "Poha,Parantha,pav bajji,dhokla"+","+message;
-
-		}
-	}
+		return util.getDetials(type);
+			}
 	
 	@GetMapping(path = "/menu/srch/{type}")
 	@RolesAllowed(value = {"ROLE_ADMIN"})

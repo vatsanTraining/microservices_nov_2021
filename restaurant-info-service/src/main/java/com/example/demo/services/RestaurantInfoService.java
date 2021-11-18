@@ -22,27 +22,27 @@ public class RestaurantInfoService {
 	public RestaurantInfoService(RestaurantInfoRepository repo) {
 		super();
 		this.repo = repo;
-		log.debug("Restaurant Service Initialized");
+		log.info("Restaurant Service Initialized");
 	}
 	
 	
 	public List<RestaurantInfo> findAll(){
 		
-		log.debug("Find all method in Service called");
+		log.info("Find all method in Service called");
 		
 		return this.repo.findAll();
 	}
 	
 	public RestaurantInfo add(RestaurantInfo entity) {
 		
-		log.debug("Add Restaurant Method in service called");
+		log.info("Add Restaurant Method in service called");
 		
 		return this.repo.save(entity);
 	}
 	
 	public RestaurantInfo findById(String id) {
 	
-		   log.debug("Find By Id in Service  Called");
+		   log.info("Find By Id in Service  Called");
 		    
 		   
 		   return this.repo.findById(id)

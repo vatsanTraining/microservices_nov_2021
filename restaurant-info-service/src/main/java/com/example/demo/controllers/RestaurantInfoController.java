@@ -40,7 +40,7 @@ public class RestaurantInfoController {
 	public RestaurantInfoController(RestaurantInfoService service) {
 		super();
 		this.service = service;
-		log.debug("Restaurant Controller Initialized");
+		log.info("Restaurant Controller Initialized");
 
 	}
 	
@@ -49,7 +49,7 @@ public class RestaurantInfoController {
 	@Operation(description = "Gets the List of all the Restaurants")
 	public List<RestaurantInfo> getAll(){
 		
-		log.debug("Restaurant Info Controller Get All Called");
+		log.info("Restaurant Info Controller Get All Called");
 
 		return this.service.findAll();
 	}
@@ -59,7 +59,7 @@ public class RestaurantInfoController {
     
 	public RestaurantInfo getById(@Parameter(description = "the id of the restaurant", example = "veg-101",required = true) @PathVariable("id") String id){
 		
-		log.debug("Restaurant Info Controller Get By Id Called");
+		log.info("Restaurant Info Controller Get By Id Called");
 
 		return this.service.findById(id);
 	}
@@ -77,7 +77,7 @@ public class RestaurantInfoController {
 				      .buildAndExpand(entity.getId())
 				      .toUri();
 		
-		log.debug("Restaurant Controller Add Method Called ");
+		log.info("Restaurant Controller Add Method Called ");
 
 		return ResponseEntity.created(location).body(entity);
 		
@@ -89,7 +89,7 @@ public class RestaurantInfoController {
 		
 		this.service.update(entity);
 		
-				log.debug("Restaurant Controller Update Method Called ");
+				log.info("Restaurant Controller Update Method Called ");
 
 		return ResponseEntity.status(HttpStatus.OK).body(entity);
 		
@@ -99,7 +99,7 @@ public class RestaurantInfoController {
 	@DeleteMapping(path = "/restaurants/{id}")
 	public String removeById(@PathVariable("id") String id){
 		
-		log.debug("Restaurant Info Controller Remove By Id Called");
+		log.info("Restaurant Info Controller Remove By Id Called");
 
 		return this.service.remove(id).orElseThrow(() -> new ElementNotFoundException("Element with Given Id Not Found"));
 	}
